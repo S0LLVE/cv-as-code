@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="$if(author)$$author$$else$$title$$endif$" />
+  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+$for(css)$
+  <link rel="stylesheet" href="$css$" />
+$endfor$
+</head>
+<body>
+  <header class="cv-header">
+    <div class="cv-header__identity">
+      <h1 class="cv-header__name">$title$</h1>
+$if(subtitle)$
+      <p class="cv-header__subtitle">$subtitle$</p>
+$endif$
+    </div>
+    <ul class="cv-header__contact">
+$if(location)$
+      <li class="cv-header__contact-item">$location$</li>
+$endif$
+$if(email)$
+      <li class="cv-header__contact-item"><a href="mailto:$email$">$email$</a></li>
+$endif$
+$if(phone)$
+      <li class="cv-header__contact-item">$phone$</li>
+$endif$
+$if(linkedin)$
+      <li class="cv-header__contact-item"><a href="https://$linkedin$">$linkedin$</a></li>
+$endif$
+$if(github)$
+      <li class="cv-header__contact-item"><a href="https://$github$">$github$</a></li>
+$endif$
+    </ul>
+  </header>
+
+  <main class="cv-body">
+$body$
+  </main>
+</body>
+</html>

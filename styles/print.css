@@ -1,0 +1,244 @@
+/* ==========================================================================
+   CV As Code — Feuille de style impression (WeasyPrint)
+   Thème : cybersécurité professionnel
+   ========================================================================== */
+
+:root {
+  /* Couleurs — palette slate / accent terminal */
+  --color-primary: #0f172a;
+  --color-primary-light: #1e293b;
+  --color-accent: #10b981;
+  --color-accent-muted: #059669;
+  --color-text: #1e293b;
+  --color-text-muted: #475569;
+  --color-text-light: #64748b;
+  --color-border: #cbd5e1;
+  --color-border-accent: #10b981;
+
+  /* Typographie */
+  --font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-mono: "Menlo", "Consolas", "Courier New", monospace;
+  --font-size-base: 10pt;
+  --font-size-small: 8.5pt;
+  --font-size-h1: 22pt;
+  --font-size-h2: 10.5pt;
+  --font-size-h3: 10pt;
+  --line-height-base: 1.45;
+  --line-height-tight: 1.25;
+
+  /* Espacements */
+  --spacing-xs: 2pt;
+  --spacing-sm: 4pt;
+  --spacing-md: 8pt;
+  --spacing-lg: 12pt;
+  --spacing-xl: 16pt;
+
+  /* Mise en page A4 */
+  --page-margin-top: 16mm;
+  --page-margin-bottom: 16mm;
+  --page-margin-left: 18mm;
+  --page-margin-right: 18mm;
+  --section-gap: var(--spacing-lg);
+  --header-accent-width: 3pt;
+}
+
+/* --------------------------------------------------------------------------
+   Page
+   -------------------------------------------------------------------------- */
+
+@page {
+  size: A4;
+  margin: var(--page-margin-top) var(--page-margin-right)
+         var(--page-margin-bottom) var(--page-margin-left);
+}
+
+/* --------------------------------------------------------------------------
+   Reset & base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background: white;
+}
+
+a {
+  color: var(--color-accent-muted);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   En-tête
+   -------------------------------------------------------------------------- */
+
+.cv-header {
+  border-left: var(--header-accent-width) solid var(--color-border-accent);
+  padding-left: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 0.75pt solid var(--color-border);
+}
+
+.cv-header__name {
+  margin: 0;
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.cv-header__subtitle {
+  margin: var(--spacing-sm) 0 0;
+  font-family: var(--font-family-mono);
+  font-size: 9.5pt;
+  font-weight: 500;
+  color: var(--color-accent-muted);
+  letter-spacing: 0.02em;
+}
+
+.cv-header__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm) var(--spacing-lg);
+  margin: var(--spacing-md) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.cv-header__contact-item {
+  display: inline;
+}
+
+.cv-header__contact-item a {
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Corps du CV — sections
+   -------------------------------------------------------------------------- */
+
+.cv-body {
+  display: block;
+}
+
+.cv-body > section {
+  margin-bottom: var(--section-gap);
+  page-break-inside: avoid;
+}
+
+.cv-body > section:last-child {
+  margin-bottom: 0;
+}
+
+.cv-body h2 {
+  margin: 0 0 var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  border-bottom: 1pt solid var(--color-border-accent);
+}
+
+.cv-body h2::before {
+  content: "// ";
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+.cv-body h3 {
+  margin: var(--spacing-md) 0 var(--spacing-xs);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.cv-body h3:first-of-type {
+  margin-top: 0;
+}
+
+.cv-body em {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-small);
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+.cv-body p {
+  margin: 0 0 var(--spacing-sm);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.cv-body ul {
+  margin: var(--spacing-xs) 0 var(--spacing-sm);
+  padding-left: var(--spacing-lg);
+}
+
+.cv-body li {
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+}
+
+.cv-body li::marker {
+  color: var(--color-accent);
+}
+
+.cv-body strong {
+  font-weight: 600;
+  color: var(--color-primary-light);
+}
+
+/* --------------------------------------------------------------------------
+   Impression — optimisations WeasyPrint
+   -------------------------------------------------------------------------- */
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a {
+    color: var(--color-text-muted);
+  }
+
+  .cv-body > section {
+    page-break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  ul,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+}
